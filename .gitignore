@@ -1,0 +1,14 @@
+
+\.project
+
+\.classpath
+
+\.DS_Store
+
+\.settings/
+
+javadoc/
+
+studentClient/derby/XML/
+
+*.xml

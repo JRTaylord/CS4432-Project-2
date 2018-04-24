@@ -89,6 +89,8 @@ public class RecordFile {
     */
    public void setInt(String fldname, int val) {
       rp.setInt(fldname, val);
+      // Project 2
+      ti.setSorted(false);
    }
    
    /**
@@ -99,6 +101,8 @@ public class RecordFile {
     */
    public void setString(String fldname, String val) {
       rp.setString(fldname, val);
+      // Project 2
+      ti.setSorted(false);
    }
    
    /**
@@ -124,6 +128,8 @@ public class RecordFile {
             appendBlock();
          moveTo(currentblknum + 1);
       }
+      // Project 2
+      ti.setSorted(false);
    }
    
    /**

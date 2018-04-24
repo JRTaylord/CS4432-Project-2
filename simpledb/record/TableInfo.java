@@ -13,6 +13,8 @@ public class TableInfo {
    private Map<String,Integer> offsets;
    private int recordlen;
    private String tblname;
+   //Project 2
+   private boolean sorted;
    
    /**
     * Creates a TableInfo object, given a table name
@@ -32,6 +34,7 @@ public class TableInfo {
          pos += lengthInBytes(fldname);
       }
       recordlen = pos;
+      sorted = false;
    }
    
    /**
@@ -92,5 +95,21 @@ public class TableInfo {
          return INT_SIZE;
       else
          return STR_SIZE(schema.length(fldname));
+   }
+
+   /**
+    * Project 2
+    * @return whether or not the table is sorted
+    */
+   public boolean getSorted(){
+      return sorted;
+   }
+
+   /**
+    * Project 2
+    * @param b: whether or not the table has been sorted
+    */
+   public void setSorted(boolean b){
+      sorted=b;
    }
 }

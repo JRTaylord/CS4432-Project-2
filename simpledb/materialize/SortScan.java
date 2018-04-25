@@ -13,10 +13,10 @@ import java.util.*;
  *
  */
 public class SortScan implements Scan {
-   private UpdateScan s1, s2=null, currentscan=null;
-   private RecordComparator comp;
-   private boolean hasmore1, hasmore2=false;
-   private List<RID> savedposition;
+   protected UpdateScan s1, s2=null, currentscan=null;
+   protected RecordComparator comp;
+   protected boolean hasmore1, hasmore2=false;
+   protected List<RID> savedposition;
    
    /**
     * Creates a sort scan, given a list of 1 or 2 runs.

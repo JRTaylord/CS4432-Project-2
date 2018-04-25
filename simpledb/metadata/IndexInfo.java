@@ -11,6 +11,7 @@ import simpledb.index.btree.BTreeIndex; //in case we change to btree indexing
 
 
 /**
+ * Project 2
  * The information about an index.
  * This information is used by the query planner in order to
  * estimate the costs of using the index,
@@ -19,7 +20,7 @@ import simpledb.index.btree.BTreeIndex; //in case we change to btree indexing
  * @author Edward Sciore
  */
 public class IndexInfo {
-   private String idxname, fldname;
+   private String idxname, fldname, idxtype;
    private Transaction tx;
    private TableInfo ti;
    private StatInfo si;
@@ -35,6 +36,7 @@ public class IndexInfo {
                     Transaction tx) {
       this.idxname = idxname;
       this.fldname = fldname;
+      this.idxtype = idxtype;
       this.tx = tx;
       ti = SimpleDB.mdMgr().getTableInfo(tblname, tx);
       si = SimpleDB.mdMgr().getStatInfo(tblname, ti, tx);

@@ -2,6 +2,8 @@ package simpledb.metadata;
 
 import static java.sql.Types.INTEGER;
 import static simpledb.file.Page.BLOCK_SIZE;
+
+import simpledb.index.exhash.EHIndex;
 import simpledb.server.SimpleDB;
 import simpledb.tx.Transaction;
 import simpledb.record.*;
@@ -32,7 +34,7 @@ public class IndexInfo {
     * @param fldname the name of the indexed field
     * @param tx the calling transaction
     */
-   public IndexInfo(String idxname, String tblname, String fldname,
+   public IndexInfo(String idxname, String tblname, String fldname, String idxtype,
                     Transaction tx) {
       this.idxname = idxname;
       this.fldname = fldname;
@@ -43,15 +45,22 @@ public class IndexInfo {
    }
    
    /**
+    * Project 2
     * Opens the index described by this object.
     * @return the Index object associated with this information
     */
    public Index open() {
       Schema sch = schema();
-      // Create new HashIndex for hash indexing
-      return new HashIndex(idxname, sch, tx);
+      if (idxtype.equals("sh"))
+         return new HashIndex(idxname, sch, tx);
+      else if (idxtype.equals("bt"))
+         return new BTreeIndex(idxname, sch, tx);
+      else if (idxtype.equals("eh"))
+         return new EHIndex(idxname, sch, tx);
+      else
+         return null;
    }
-   
+
    /**
     * Estimates the number of block accesses required to
     * find all index records having a particular search key.

@@ -102,7 +102,7 @@ public class RecordFile {
    public void setString(String fldname, String val) {
       rp.setString(fldname, val);
       // Project 2
-      ti.setSorted(false);
+      //ti.setSorted(false);
    }
    
    /**

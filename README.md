@@ -31,3 +31,5 @@ Task 5
     
 Bugs
 
+    The code for part 4 and 5 is not runnable nor testable because of the
+    complexity of the code.

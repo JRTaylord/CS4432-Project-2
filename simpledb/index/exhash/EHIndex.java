@@ -41,7 +41,7 @@ public class EHIndex implements Index{
             tempScan.setString("filename", this.idxname + 0);
             tempScan.setInt("localdepth", 1);
             tempScan.insert();
-            tempScan.setInt("bits", 0);
+            tempScan.setInt("bits", 1);
             tempScan.setString("filename", this.idxname + 1);
             tempScan.setInt("localdepth", 1);
         }
@@ -125,14 +125,25 @@ public class EHIndex implements Index{
 
             temp.beforeFirst();
             int sigbit = (int)Math.pow(2, localdepth-1);
-            while(temp.next()) {
+//            while(temp.next()) {
+//                int bucket = temp.getInt("bits");
+//                if(bucket % sigbit == searchkey.hashCode() % sigbit){
+//                    temp.setInt("localdepth", localdepth);
+//                    if(bucket/sigbit>=1)
+//                        temp.setString("filename", bktname2);
+//                    else
+//                        temp.setString("filename", bktname1);
+//                }
+//            }
+            while (temp.next()){
                 int bucket = temp.getInt("bits");
                 if(bucket % sigbit == searchkey.hashCode() % sigbit){
                     temp.setInt("localdepth", localdepth);
-                    if(bucket/sigbit>=1)
+                    if(bucket/sigbit>=1){
                         temp.setString("filename", bktname2);
-                    else
+                    } else {
                         temp.setString("filename", bktname1);
+                    }
                 }
             }
             temp.close();

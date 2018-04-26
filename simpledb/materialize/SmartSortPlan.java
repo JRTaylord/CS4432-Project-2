@@ -40,6 +40,9 @@ public class SmartSortPlan extends SortPlan{
         src.close();
         while (runs.size() > 2)
             runs = doAMergeIteration(runs);
+        // TODO still haven't figured out how to throw the sorted table back into the database
+        // theoretically this should work
+        // mdm.getTableInfo(tableName, tx).setSorted(true);
         return new SmartSortScan(runs, comp);
     }
 }
